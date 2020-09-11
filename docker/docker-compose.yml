@@ -6,6 +6,7 @@ services:
       context: ./php-fpm
     volumes:
       - ../src:/var/www
+
   nginx:
     build:
       context: ./nginx
@@ -19,7 +20,8 @@ services:
       - "443:443"
     depends_on:
       - php-fpm
-  database:
+
+  mariadb:
     build:
       context: ./database
     environment:
@@ -27,3 +29,13 @@ services:
       - MYSQL_USER=houge
       - MYSQL_PASSWORD=password
       - MYSQL_ROOT_PASSWORD=docker
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - 8000:80
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=mariadb
+    depends_on:
+      - mariadb
