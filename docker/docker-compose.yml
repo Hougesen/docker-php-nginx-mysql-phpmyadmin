@@ -21,7 +21,7 @@ services:
     depends_on:
       - php-fpm
 
-  mariadb:
+  mysql:
     build:
       context: ./database
     environment:
