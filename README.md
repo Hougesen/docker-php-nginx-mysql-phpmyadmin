@@ -6,3 +6,5 @@ Remember to change the password and username of the MySQL user. If you are not i
 * userpassword = "password"
 * rootusername = "root"
 * rootpassword = "docker"
+
+The user named "houge" only has access to the database called "mydb". 
